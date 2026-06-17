@@ -1,73 +1,139 @@
-[Facebook Search Pages](https://apify.com/iron-crawler/facebook-search-pages?fpr=data)
+[Facebook Search Pages](https://apify.com/patient_discovery/facebook-search-pages?fpr=data)
 
-"# Facebook Page Search Results Scraper - No Login Needed
+# **Facebook Page Search Results Scraper - No Login Required**
 
-## What does Facebook Page Search Results Scraper - No Login Needed do?
+## **What does this scraper do?**
 
-This tool extracts comprehensive data from Facebook page search results without requiring any login credentials or cookies. Built with a cookieless architecture, it allows you to search for Facebook pages using keywords and retrieve detailed information including follower counts, verification status, categories, and recent activity. The scraper operates entirely through public endpoints, eliminating authentication barriers and making data collection straightforward and reliable.
+This actor extracts Facebook page search results based on keyword queries.
 
-**Key Features:**
+Enter a search term, run the actor, and receive structured data for Facebook pages matching your query.
 
-- Scrape Facebook page search results using any keyword or search term
-- Extract page metadata including follower counts, verification badges, and categories
-- Retrieve profile images and last post timestamps
-- Export data in JSON, CSV, or Excel formats
-- No login required: completely cookieless operation
-- Filter and search across thousands of public Facebook pages
-- Automated data collection for lead generation and market research
+No Facebook login, no cookies, no session handling required.
 
-## Why scrape Facebook page search results?
+Cookieless architecture ensures stable, risk-free, and scalable automation.
 
-Social media marketers need to scrape Facebook page search results to build comprehensive contact databases and identify potential leads for targeted marketing campaigns. By extracting structured data from Facebook's search functionality, you can discover relevant businesses, influencers, and organizations within your niche, analyze their engagement metrics, and prioritize outreach efforts based on follower counts and activity levels.
+## **Why scrape Facebook page search results?**
 
-**Primary Use Cases:**
+Facebook page search allows you to discover businesses, brands, and organizations by keyword. This helps marketers, analysts, and sales teams to:
 
-- **Lead Generation:** Identify potential B2B clients by searching for pages in specific industries or categories, then build targeted outreach lists based on follower counts and engagement signals.
-- **Competitive Intelligence:** Monitor competitor pages, track their growth metrics, and analyze market positioning by collecting data on similar pages within your industry vertical.
-- **Influencer Discovery:** Find verified pages and high-follower accounts relevant to your niche for partnership opportunities, sponsored content, or affiliate marketing campaigns.
+- Build targeted prospect lists by niche or industry
+- Identify competitor pages and emerging brands
+- Discover verified business pages
+- Enrich CRM systems with Facebook page data
+- Generate qualified leads for outreach campaigns
+- Analyze brand positioning within specific markets
+- Build structured marketing and research databases
 
-## How to scrape Facebook page search results using this tool?
+Its cookieless design fits scalable data pipelines without needing Facebook accounts.
 
-**Step 1:** Identify your search keyword or term. This could be an industry name (e.g., ""digital marketing""), a location-based query (e.g., ""coffee shops Seattle""), or any phrase that returns Facebook page results.
+## **How much will scraping cost?**
 
-**Step 2:** Configure the input parameters by entering your search query in the `query` field. The scraper will process search results and extract page data. Note: **1 search query ≈ 50-100 page results** depending on Facebook's available data.
+The pricing for this actor is **$2.50 per 1,000 scraped results**. Refer to the pricing page.
 
-**Step 3:** Run the scraper and wait for completion. Once finished, download your results in JSON, CSV, or Excel format directly from the Apify platform.
+Because this actor does not require login or session management, it reduces operational complexity and lowers the risk associated with account-based scraping. This predictable architecture keeps your data pipelines highly stable.
 
-## What are the input parameters?
+## **How to use the scraper**
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `query` | String | The search term or keyword to find Facebook pages (e.g., ""insights"", ""tech startups"", ""fitness coaches""). This parameter determines which pages appear in your results. |
+Here is a **step-by-step guide**:
 
-## What data can you extract?
+**Step 1: Open the actor:** Go to your Apify Console and open the scraper.
 
-You can download the following data in JSON, CSV, or Excel formats:
+**Step 2: Enter your input parameters:** In the input field, enter the keyword or search term (e.g., "digital marketing agency", "coffee shop", "fitness coaching").
+
+**Step 3: Start the run:** Click Start to begin scraping. The actor will extract Facebook pages matching your search query.
+
+**Step 4: Export or integrate:** Once complete, download the dataset in JSON, CSV, or connect it via API to your CRM, analytics platform, or marketing automation system.
+
+## **Input parameters**
+
+Below are the configuration options you can use to control the scraper.
+
+**Input example**
 
 ```
 {
-  ""page_id"": ""102938475612"",
-  ""page_name"": ""Tech Startup Hub"",
-  ""page_category"": ""Business & Technology"",
-  ""follower_count"": 45892,
-  ""page_verified"": true,
-  ""page_url"": ""https://facebook.com/techstartuphub"",
-  ""last_post_timestamp"": ""2025-12-17T15:30:22Z"",
-  ""profile_image_url"": ""https://graph.facebook.com/v12.0/102938475612/picture""
+  "query": "digital marketing agency"
 }
 ```
 
-**Extracted Fields:**
+| Field | Type | Description |
+| --- | --- | --- |
+| query | String | Search term or keyword used to find relevant Facebook pages |
 
-- `page_id`: Unique Facebook identifier for the page
-- `page_name`: Display name of the Facebook page
-- `page_category`: Business category or page type
-- `follower_count`: Total number of followers
-- `page_verified`: Verification badge status (true/false)
-- `page_url`: Direct link to the Facebook page
-- `last_post_timestamp`: Timestamp of the most recent post
-- `profile_image_url`: URL to the page's profile picture
+## **What data does this scraper extract?**
 
----
+**Formats**: JSON, CSV, Excel
 
-This Facebook page scraper serves as a powerful Facebook data extractor for marketers who need to export Facebook page data at scale. Whether you're building Facebook lead generation data pipelines or conducting competitive analysis, this social media scraping tool delivers structured Facebook search results scraper capabilities without authentication complexity. Start using this scraper to scrape Facebook pages efficiently and build your marketing database today."
+**Key Fields Extracted**:
+
+- `type` - Entity type (page)
+- `profile_url` - Direct URL to the Facebook page
+- `url` - Canonical page URL
+- `name` - Page display name
+- `facebook_id` - Unique Facebook page identifier
+- `is_verified` - Verification status
+- `image.uri` - Profile image URL
+- `image.width` - Image width
+- `image.height` - Image height
+- `image.scale` - Image scale value
+
+All data is returned as structured JSON with null-safe fields for reliable downstream processing.
+
+## Sample Output
+
+```
+[
+  {
+    "type": "page",
+    "profile_url": "https://www.facebook.com/techstartupshub",
+    "url": "https://www.facebook.com/techstartupshub",
+    "image": {
+      "uri": "https://scontent.fknu1-3.fna.fbcdn.net/v/t39.30808-1/profile_image.jpg",
+      "width": 120,
+      "height": 120,
+      "scale": 2
+    },
+    "name": "Tech Startups Hub",
+    "facebook_id": "100075432198765",
+    "is_verified": true
+  }
+]
+```
+
+All data is delivered in structured JSON format suitable for lead generation, competitive intelligence, and large-scale Facebook page discovery workflows.
+
+## **Key Features:**
+
+- 📈 Extract Facebook pages by keyword search
+- 📊 Capture page names, URLs, and verification status
+- ⚡ Structured JSON output ready for analytics and automation
+- 📈 Build targeted lead generation databases
+- 📊 Export-ready formats including JSON, CSV, and Excel
+- ⚡ Scalable architecture for high-volume keyword searches
+- 🔒 Fully cookieless architecture with no login required
+
+## **FAQs**
+
+**Does this scraper require Facebook login?** No. It is fully cookieless and does not require login credentials.
+
+**Can it scrape private profiles?** No. Only publicly accessible Facebook pages can be extracted.
+
+**Can I run multiple keyword searches?** Yes. Run separate executions for each query or integrate via API for bulk processing.
+
+**Other Facebook scrapers that you may find useful:**
+
+[Facebook Page Search Scraper](https://apify.com/patient_discovery/facebook-search-pages)
+
+[Facebook Group Posts Scraper](https://apify.com/patient_discovery/facebook-group-posts)
+
+[Facebook Search Events Scraper](https://apify.com/patient_discovery/facebook-search-events)
+
+[Facebook Page Details Scraper](https://apify.com/patient_discovery/facebook-page-details)
+
+[Facebook Marketplace Details Scraper](https://apify.com/patient_discovery/facebook-marketplace-details)
+
+[Facebook Page Reviews Scraper](https://apify.com/patient_discovery/facebook-page-reviews)
+
+[Facebook Page Posts Scraper](https://apify.com/patient_discovery/facebook-page-posts)
+
+[Facebook Search People Scraper](https://apify.com/patient_discovery/facebook-search-people)
